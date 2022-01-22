@@ -9,9 +9,19 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      todos: [],
+    };
+  },
+  async mounted() {
+    this.fetchTodoList();
+  },
+  methods: mapActions(["fetchTodoList"]),
 };
 </script>
 
