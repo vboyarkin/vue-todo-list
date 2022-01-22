@@ -1,5 +1,7 @@
 # vue-todo-list
 
+![Task](img/task-1.jpg)
+
 ## Project setup
 ```
 npm install
