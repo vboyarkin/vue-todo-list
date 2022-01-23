@@ -1,11 +1,28 @@
 export default {
   actions: {
-    async fetchTodoList(ctx) {
-      const res = await fetch(
-        "http://localhost:3000/todos"
-      );
-      const data = await res.json()
-      ctx.commit('updateTodoList', data);
+    fetchTodoList({ commit, dispatch }) {
+      let todos = localStorage.getItem("todos");
+      if (!todos) {
+        todos = [];
+        dispatch('saveToStorage', []);
+      } else
+        todos = JSON.parse(todos)
+      commit('updateTodoList', todos);
+    },
+    saveToStorage({ state }, todos = state.todos) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    },
+    updateTodo({ commit, dispatch }, todo) {
+      commit('updateTodo', todo)
+      dispatch('saveToStorage');
+    },
+    createTodo({ commit, dispatch }, todo) {
+      commit('createTodo', todo)
+      dispatch('saveToStorage');
+    },
+    deleteTodo({ commit, dispatch }, id) {
+      commit('deleteTodo', id)
+      dispatch('saveToStorage');
     }
   },
   mutations: {

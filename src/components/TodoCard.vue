@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
   props: {
     todo: {
@@ -38,7 +38,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["deleteTodo"]),
+    ...mapActions(["deleteTodo"]),
     deleteClick() {
       this.deleteTodo(this.todo.id);
     },

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -51,7 +51,7 @@ export default {
     ...mapGetters(["getTodo"]),
   },
   methods: {
-    ...mapMutations(["createTodo", "deleteTodo", "updateTodo"]),
+    ...mapActions(["createTodo", "deleteTodo", "updateTodo"]),
     submit() {
       if (this.todo.title.trim() === "") return;
 

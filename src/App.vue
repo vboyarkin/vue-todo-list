@@ -22,7 +22,7 @@ export default {
       todos: [],
     };
   },
-  async mounted() {
+  mounted() {
     this.fetchTodoList();
   },
   methods: mapActions(["fetchTodoList"]),
