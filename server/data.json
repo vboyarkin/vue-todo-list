@@ -1,0 +1,60 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "delectus aut autem",
+      "description": "vero rerum temporibus dolor",
+      "status": "in-progress",
+      "createdAt": 1642000300000
+    },
+    {
+      "id": 2,
+      "title": "quis ut nam facilis et officia qui",
+      "description": "ipsa repellendus fugit nisi",
+      "status": "in-progress",
+      "createdAt": 1642284300000
+    },
+    {
+      "id": 3,
+      "title": "fugiat veniam minus",
+      "description": "et doloremque nulla",
+      "status": "new",
+      "createdAt": 1642284300000
+    },
+    {
+      "id": 4,
+      "title": "et porro tempora",
+      "description": "repellendus sunt dolores architecto voluptatum",
+      "status": "completed",
+      "createdAt": 1642384300000
+    },
+    {
+      "id": 5,
+      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+      "description": "ab voluptatum amet voluptas",
+      "status": "in-progress",
+      "createdAt": 1642784300000
+    },
+    {
+      "id": 6,
+      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+      "description": "accusamus eos facilis sint et aut voluptatem",
+      "status": "new",
+      "createdAt": 1642884400449
+    },
+    {
+      "id": 7,
+      "title": "illo expedita consequatur quia in",
+      "description": "quo laboriosam deleniti aut qui",
+      "status": "new",
+      "createdAt": 1642884800449
+    },
+    {
+      "id": 8,
+      "title": "quo adipisci enim quam ut ab",
+      "description": "dolorum est consequatur ea mollitia in culpa",
+      "status": "completed",
+      "createdAt": 1642884840449
+    }
+  ]
+}
