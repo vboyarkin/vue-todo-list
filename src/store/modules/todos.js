@@ -16,7 +16,7 @@ export default {
       state.todos[todo.id] = todo;
     },
     createTodo(state, todo) {
-      todo.id = state.todos.length;
+      todo.id = state.todos.length + 1;
       state.todos.push(todo);
     }
   },
@@ -25,12 +25,12 @@ export default {
   },
   getters: {
     allTodos(state) {
-      return state.todos
+      return state.todos;
     },
     getTodo(state, id) {
       if (state.todos.length <= id) return null;
 
       return state.todos[id];
-    }
+    },
   },
 }

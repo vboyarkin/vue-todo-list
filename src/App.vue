@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link class="nav-link" to="/">Список задач</router-link>
-      <router-link class="nav-link" to="/new-task">Добавить задачу</router-link>
+    <div class="wrap">
+      <div id="nav">
+        <router-link class="nav-link" to="/">Список задач</router-link>
+        <router-link class="nav-link" to="/new-task"
+          >Добавить задачу</router-link
+        >
+      </div>
+      <router-view />
     </div>
-    <router-view />
   </div>
 </template>
 
@@ -30,9 +34,9 @@ body
   font-family: $main-font
 
 #nav
+  font-size: 1.2rem
   display: flex
   justify-content: center
-  font-size: 1.2rem
 
 .nav-link
   color: $color-active
@@ -45,4 +49,15 @@ body
 .router-link-exact-active
   background: $color-active
   color: white
+
+#app
+  width: 100%
+
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+div.wrap
+  width: 600px
 </style>

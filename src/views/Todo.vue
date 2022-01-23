@@ -13,10 +13,16 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      todo: {}
+      todo: {
+        id: -1,
+        name: "",
+        description: "",
+        status: "new",
+        createdAt: new Date().getTime(),
+      },
     };
   },
-  methods: mapGetters(['getTodo']),
+  methods: mapGetters(["getTodo"]),
   mounted() {
     const id = this.$route.query.id;
 
