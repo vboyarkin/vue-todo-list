@@ -18,8 +18,16 @@
         <option class="in-progress" value="in-progress" mu>В процессе</option>
         <option class="completed" value="completed">Выполнена</option>
       </select>
-      <button type="submit" class="add">Добавить</button>
-      <button v-if="todo.id" @click="deleteTodo" class="delete">Удалить</button>
+      <button
+        type="submit"
+        class="add"
+        :class="{ disabled: todo.title.trim() === '' }"
+      >
+        {{ isEditing ? "Сохранить" : "Добавить" }}
+      </button>
+      <button v-if="todo.id" @click="deleteClick" class="delete">
+        Удалить
+      </button>
     </div>
   </form>
 </template>
@@ -36,21 +44,30 @@ export default {
         status: "new",
         createdAt: new Date().getTime(),
       },
+      isEditing: false,
     };
   },
-  computed: mapGetters(["getTodo"]),
+  computed: {
+    ...mapGetters(["getTodo"]),
+  },
   methods: {
-    ...mapMutations(["createTodo", "deleteTodo"]),
+    ...mapMutations(["createTodo", "deleteTodo", "updateTodo"]),
     submit() {
-      this.createTodo(this.todo);
+      if (this.todo.title.trim() === "") return;
+
+      if (this.isEditing) this.updateTodo(this.todo);
+      else this.createTodo(this.todo);
+
       this.todo = {
         title: "",
         description: "",
         status: "new",
         createdAt: new Date().getTime(),
       };
+
+      this.$router.push("/");
     },
-    deleteTodo() {
+    deleteClick() {
       this.deleteTodo(this.todo.id);
       this.todo = {
         title: "",
@@ -58,11 +75,14 @@ export default {
         status: "new",
         createdAt: new Date().getTime(),
       };
+      this.$router.push("/");
     },
   },
   mounted() {
-    if (this.$route.query.id !== undefined)
+    if (this.$route.query.id !== undefined) {
+      this.isEditing = true;
       this.todo = this.getTodo(this.$route.query.id);
+    }
   },
 };
 </script>
@@ -107,6 +127,10 @@ button.add
   background-color: $color-active
   border-color: $color-active
   color: white
+
+button.disabled
+  cursor: not-allowed
+  filter: opacity(0.6)
 
 button.delete
   background-color: white

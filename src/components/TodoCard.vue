@@ -6,7 +6,13 @@
         <span class="status">{{ statusCaptions[todo.status] }}</span>
       </div>
     </div>
+
     <p>{{ todo.description }}</p>
+
+    <router-link tag="button" class="edit" :to="'/task?id=' + todo.id">
+      Изменить
+    </router-link>
+    <button class="delete" @click="deleteClick">Удалить</button>
     <span class="date">
       Создано {{ new Date(todo.createdAt).toLocaleDateString() }}
     </span>
@@ -14,6 +20,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   props: {
     todo: {
@@ -29,6 +36,12 @@ export default {
         completed: "Выполнена",
       },
     };
+  },
+  methods: {
+    ...mapMutations(["deleteTodo"]),
+    deleteClick() {
+      this.deleteTodo(this.todo.id);
+    },
   },
 };
 </script>
@@ -71,4 +84,23 @@ export default {
 span.date
   font-size: 0.8rem
   color: #353535
+  margin-left: 0.8rem
+  align-self: center
+
+button
+  padding: 0.5rem
+  margin: .3rem
+  border-radius: 3px
+  border: solid 1px
+  cursor: pointer
+
+button.edit
+  background-color: $color-active
+  border-color: $color-active
+  color: white
+
+button.delete
+  background-color: white
+  border-color: $color-warning
+  color: $color-warning
 </style>

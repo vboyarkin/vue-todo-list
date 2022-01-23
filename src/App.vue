@@ -3,7 +3,7 @@
     <div class="wrap">
       <div id="nav">
         <router-link class="nav-link" to="/">Список задач</router-link>
-        <router-link class="nav-link" to="/new-task"
+        <router-link class="nav-link" to="/task"
           >Добавить задачу</router-link
         >
       </div>

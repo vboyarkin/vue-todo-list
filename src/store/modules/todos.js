@@ -13,14 +13,14 @@ export default {
       state.todos = list;
     },
     updateTodo(state, todo) {
-      state.todos[todo.id] = todo;
+      state.todos[todo.id - 1] = todo;
     },
     createTodo(state, todo) {
       todo.id = state.todos.length + 1;
       state.todos.push(todo);
     },
     deleteTodo(state, id) {
-      if (id <= state.todos.length)
+      if (id - 1 <= state.todos.length)
         state.todos.splice(id - 1, 1)
     }
   },
@@ -31,10 +31,14 @@ export default {
     allTodos(state) {
       return state.todos;
     },
-    getTodo(state, id) {
-      if (state.todos.length <= id) return null;
+    getTodo:
+      (state) => (id) => {
+        if (id - 1 >= state.todos.length) return null;
 
-      return state.todos[id];
-    },
+        console.log('id :>> ', id);
+
+        console.log("getTodo()");
+        return state.todos[id - 1];
+      },
   },
 }
