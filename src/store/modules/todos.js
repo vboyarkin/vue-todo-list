@@ -18,6 +18,10 @@ export default {
     createTodo(state, todo) {
       todo.id = state.todos.length + 1;
       state.todos.push(todo);
+    },
+    deleteTodo(state, id) {
+      if (id <= state.todos.length)
+        state.todos.splice(id - 1, 1)
     }
   },
   state: {
