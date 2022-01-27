@@ -40,7 +40,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import statusCaptions from "@/statusCaptions";
+import statusCaptions from "@/assets/statusCaptions";
 
 export default {
   data() {

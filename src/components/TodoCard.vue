@@ -19,7 +19,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import statusCaptions from "@/statusCaptions";
+import statusCaptions from "@/assets/statusCaptions";
 export default {
   props: {
     todo: {
