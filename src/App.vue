@@ -7,20 +7,31 @@
           Добавить задачу
         </router-link>
       </div>
-      <router-view />
+      <Loader v-if="isLoading" />
+      <router-view v-else />
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
+import Loader from "./components/Loader.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: { Loader },
   mounted() {
-    this.fetchTodoList();
+    this.fetchTodoList().then(() => {
+      setTimeout(() => this.doneLoading(), 1000);
+    });
   },
-  methods: mapActions(["fetchTodoList"]),
+  computed: {
+    ...mapGetters(["isLoading"]),
+  },
+  methods: {
+    ...mapActions(["fetchTodoList"]),
+    ...mapMutations(["doneLoading"]),
+  },
 };
 </script>
 

@@ -11,7 +11,7 @@ export default {
     },
   },
   actions: {
-    fetchTodoList({ commit }) {
+    async fetchTodoList({ commit }) {
       let todos = localStorage.getItem("todos");
       if (todos) {
         try {
