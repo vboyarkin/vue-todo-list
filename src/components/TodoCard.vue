@@ -3,7 +3,7 @@
     <div class="todo-card-head">
       <h4>{{ todo.title }}</h4>
       <div class="status-container">
-        <span class="status">{{ statusCaptions[todo.status] }}</span>
+        <span class="status">{{ status }}</span>
       </div>
     </div>
 
@@ -13,14 +13,13 @@
       Изменить
     </router-link>
     <button class="delete" @click="deleteClick">Удалить</button>
-    <span class="date">
-      Создано {{ new Date(todo.createdAt).toLocaleDateString() }}
-    </span>
+    <span class="date"> Создано {{ date }} </span>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import statusCaptions from "@/statusCaptions";
 export default {
   props: {
     todo: {
@@ -28,19 +27,18 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      statusCaptions: {
-        new: "Новая",
-        "in-progress": "В процессе",
-        completed: "Выполнена",
-      },
-    };
-  },
   methods: {
     ...mapActions(["deleteTodo"]),
     deleteClick() {
       this.deleteTodo(this.todo.id);
+    },
+  },
+  computed: {
+    status() {
+      return statusCaptions[this.todo.status];
+    },
+    date() {
+      return new Date(this.todo.createdAt).toLocaleDateString();
     },
   },
 };

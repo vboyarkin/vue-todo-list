@@ -14,10 +14,16 @@
         placeholder="Описание задачи"
       />
       <select name="status" v-model="todo.status" :class="todo.status">
-        <option class="new" value="new">Новая</option>
-        <option class="in-progress" value="in-progress" mu>В процессе</option>
-        <option class="completed" value="completed">Выполнена</option>
+        <option
+          v-for="(val, property, i) in statusCaptions"
+          :key="i"
+          :value="property"
+          :class="property"
+        >
+          {{ val }}
+        </option>
       </select>
+
       <button
         type="submit"
         class="add"
@@ -34,6 +40,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import statusCaptions from "@/statusCaptions";
 
 export default {
   data() {
@@ -49,6 +56,9 @@ export default {
   },
   computed: {
     ...mapGetters(["getTodo"]),
+    statusCaptions() {
+      return statusCaptions;
+    },
   },
   methods: {
     ...mapActions(["createTodo", "deleteTodo", "updateTodo"]),
@@ -58,23 +68,11 @@ export default {
       if (this.isEditing) this.updateTodo(this.todo);
       else this.createTodo(this.todo);
 
-      this.todo = {
-        title: "",
-        description: "",
-        status: "new",
-        createdAt: new Date().getTime(),
-      };
-
       this.$router.push("/");
     },
     deleteClick() {
       this.deleteTodo(this.todo.id);
-      this.todo = {
-        title: "",
-        description: "",
-        status: "new",
-        createdAt: new Date().getTime(),
-      };
+
       this.$router.push("/");
     },
   },
