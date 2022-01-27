@@ -79,9 +79,16 @@ export default {
     },
   },
   mounted() {
-    if (this.$route.query.id !== undefined) {
+    if (this.$route.params.id !== undefined) {
       this.isEditing = true;
-      this.todo = this.getTodo(this.$route.query.id);
+      const todo = this.getTodo(this.$route.params.id);
+
+      if (!todo) {
+        console.error(`Todo with id=${this.$route.params.id} wasn't found`);
+        return;
+      }
+
+      this.todo = todo;
     }
   },
 };

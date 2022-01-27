@@ -9,7 +9,7 @@
 
     <p>{{ todo.description }}</p>
 
-    <router-link tag="button" class="edit" :to="'/task?id=' + todo.id">
+    <router-link tag="button" class="edit" :to="`/task/${todo.id}`">
       Изменить
     </router-link>
     <button class="delete" @click="deleteClick">Удалить</button>

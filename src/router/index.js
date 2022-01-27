@@ -1,22 +1,28 @@
-import VueRouter from 'vue-router';
-import Home from "@/views/Home.vue"
-import Task from "@/views/Todo.vue"
+import VueRouter from "vue-router";
+import Home from "@/views/Home.vue";
+import Task from "@/views/Todo.vue";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
-    path: '/task',
+    path: "/task/:id",
     name: "Task ",
-    component: Task
-  }
-]
+    component: Task,
+  },
+  {
+    path: "/new-task",
+    name: "New task",
+    component: Task,
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
+  mode: "history",
+  routes,
+});
 
-export default router
+export default router;

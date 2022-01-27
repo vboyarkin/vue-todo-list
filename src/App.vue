@@ -3,9 +3,9 @@
     <div class="wrap">
       <div id="nav">
         <router-link class="nav-link" to="/">Список задач</router-link>
-        <router-link class="nav-link" to="/task"
-          >Добавить задачу</router-link
-        >
+        <router-link class="nav-link" to="/new-task">
+          Добавить задачу
+        </router-link>
       </div>
       <router-view />
     </div>
@@ -17,11 +17,6 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   components: {},
-  data() {
-    return {
-      todos: [],
-    };
-  },
   mounted() {
     this.fetchTodoList();
   },
